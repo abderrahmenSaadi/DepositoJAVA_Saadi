@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// This program calculates the total of grades entered by the user and categorizes them as insufficient, sufficient, or excellent based on their value.
 public class exerciceGrades {
     public static void main(String[] args) {
         int numberOfGrades;
@@ -7,11 +7,11 @@ public class exerciceGrades {
         int totalOfGrades = 0;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the number of grades: ");
+        System.out.println("Enter the number of grades: ");// Input validation
         numberOfGrades = sc.nextInt();
 
         while (numberOfGrades <= 0) {
-            System.out.println("Please enter a positive number: ");
+            System.out.println("Please enter a positive number: "); // Prompt user again if input is invalid
             numberOfGrades = sc.nextInt();
         }
 
