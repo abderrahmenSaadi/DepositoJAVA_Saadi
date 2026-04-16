@@ -1,7 +1,8 @@
+package Basics;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class exrciceGrades {
+public class Grades {
     public static void main(String[] args) {
         ArrayList<Integer> grades = new ArrayList<>();
         Scanner sc = new Scanner(System.in);

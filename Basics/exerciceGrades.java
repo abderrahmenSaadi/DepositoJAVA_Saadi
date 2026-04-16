@@ -1,3 +1,4 @@
+package Basics;
 import java.util.Scanner;
 // This program calculates the total of grades entered by the user and categorizes them as insufficient, sufficient, or excellent based on their value.
 public class exerciceGrades {
