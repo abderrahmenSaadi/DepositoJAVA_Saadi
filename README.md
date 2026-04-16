@@ -1,56 +1,65 @@
 # 🚀 DepositoJAVA_Saadi
 
 Saadi Mohamed  
-📧 abouglia57@gmail.com
+📧 abouglia57@gmail.com  
 
-# 🚀 DepositoJAVA_Saadi
-
-Welcome to my Java learning repository!  
-This repo documents my journey from Java fundamentals to building backend applications with Spring Boot.
+🌍 Languages: [English](README.md) | [Italiano](README.it.md)
 
 ---
 
 ## 📌 About This Repository
 
-This project is a structured collection of exercises, examples, and mini-projects created while learning:
+This repository documents my structured learning path in Java as part of a professional training program.
 
-- Core Java (OOP, collections, exceptions, etc.)
-- Advanced Java concepts
-- Spring Boot (REST APIs, backend architecture)
+It includes:
 
-The goal is not just to learn syntax, but to understand how to build real-world applications.
+- Core Java fundamentals
+- Object-Oriented Programming (OOP)
+- Collections and data structures
+- Progressive backend development (Spring Boot)
+
+The objective is to move from theory to real-world backend applications.
+
+---
+
+## 🚀 Featured Projects (Portfolio Section)
+
+> ⚠️ This section will grow as I build more complete applications
+
+- 🔹 Coming soon: REST API with Spring Boot  
+- 🔹 Coming soon: CRUD application with database integration  
+- 🔹 Coming soon: Authentication system (JWT)
 
 ---
 
 ## 🧠 Learning Roadmap
 
-### ✅ Phase 1: Java Basics
-- Variables & Data Types
-- Control Flow (if, loops)
-- Methods
-- Arrays
+### ✅ Java Fundamentals
+- Variables, Data Types
+- Control Flow
+- Methods & Arrays
 
-### ✅ Phase 2: Object-Oriented Programming
+### ✅ Object-Oriented Programming
 - Classes & Objects
-- Inheritance
-- Polymorphism
+- Inheritance & Polymorphism
 - Encapsulation & Abstraction
 
-### 🔄 Phase 3: Intermediate Java
+### 🔄 Intermediate Java
 - Collections Framework
 - Exception Handling
 - File I/O
-- Streams & Lambda Expressions
+- Streams & Lambdas
 
-### ⏳ Phase 4: Spring Boot (Upcoming / In Progress)
+### ⏳ Backend Development (In Progress)
+- Spring Boot
 - REST APIs
-- Dependency Injection
+- JPA / Hibernate
 - MVC Architecture
-- Database Integration (JPA / Hibernate)
 
 ---
 
 ## 📂 Project Structure
+
 
 ```
 DepositoJAVA_Saadi/
@@ -62,39 +71,34 @@ DepositoJAVA_Saadi/
 └── springboot/    # (In progress) Future Spring Boot applications
 ```
 
-> ⚠️ Note: This repository is part of an ongoing learning course.  
-> It currently contains mainly exercises and practice code.
+
+> ⚠️ Note: The repository currently contains mainly exercises.  
+> Structured backend projects are being added progressively.
+
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
 - Java (JDK 17+)
 - IntelliJ IDEA / VS Code
-- Maven (for upcoming Spring Boot projects)
+- Maven
 - Git & GitHub
+
+---
+
+## 📈 Current Focus
+
+- Writing clean and maintainable Java code  
+- Understanding backend architecture  
+- Preparing for Spring Boot projects  
 
 ---
 
 ## 🎯 Goals
 
-- Build a strong foundation in Java
-- Write clean, readable, and maintainable code
-- Transition into backend development with Spring Boot
-- Develop real-world projects for my portfolio
-
----
-
-## 📈 Progress Tracking
-
-This repository is actively maintained and updated as I progress in my learning journey.  
-Each section reflects my current level and improvements over time.
-
----
-
-## 🤝 Contributions
-
-This is a personal learning repository.  
-However, feedback, suggestions, and improvements are always welcome.
+- Become a backend developer (Java / Spring Boot)
+- Build production-ready applications
+- Develop a strong GitHub portfolio
 
 ---
 
@@ -104,7 +108,7 @@ However, feedback, suggestions, and improvements are always welcome.
 
 ---
 
-## ⭐ Final Note
+## ⭐ Philosophy
 
-This repository represents continuous learning and discipline.  
-The focus is on progress and consistency over time.
+Consistency over intensity.  
+This repository reflects continuous improvement over time.
