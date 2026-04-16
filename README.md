@@ -3,7 +3,9 @@
 Saadi Mohamed  
 📧 abouglia57@gmail.com  
 
-🌍 Languages: [English](README.md) | [Italiano](README.it.md)
+🌍 Languages: 
+- 🇬🇧 [English version](README.md)  
+- 🇮🇹 [Versione italiana](README.it.md)
 
 ---
 
