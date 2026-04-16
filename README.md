@@ -1,5 +1,7 @@
-# DepositoJAVA_Saadi
-Saadi Mohamed - abouglia57@gmail.com
+# 🚀 DepositoJAVA_Saadi
+
+Saadi Mohamed  
+📧 abouglia57@gmail.com
 
 # 🚀 DepositoJAVA_Saadi
 
@@ -52,11 +54,11 @@ The goal is not just to learn syntax, but to understand how to build real-world 
 
 DepositoJAVA_Saadi/
 │
-├── basics/        # Java fundamentals exercises
-├── oop/           # Object-oriented programming examples
-├── collections/   # Collections and data structures
-├── projects/      # Small practice projects
-└── springboot/    # (In progress) Future Spring Boot applications
+├── basics/ # Java fundamentals exercises
+├── oop/ # Object-oriented programming examples
+├── collections/ # Collections and data structures
+├── projects/ # Small practice projects
+└── springboot/ # (In progress) Future Spring Boot applications
 
 > ⚠️ Note: This repository is part of an ongoing learning course.  
 > It currently contains mainly exercises and practice code, with more structured projects coming soon.
