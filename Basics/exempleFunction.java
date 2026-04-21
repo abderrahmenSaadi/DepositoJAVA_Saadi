@@ -1,4 +1,3 @@
-package Basics;
 public class exempleFunction {
     public static void main(String[] args) {
         int a = 5;

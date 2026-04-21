@@ -1,4 +1,3 @@
-package Basics;
 import java.util.ArrayList;
 
 public class arraylistexp {
