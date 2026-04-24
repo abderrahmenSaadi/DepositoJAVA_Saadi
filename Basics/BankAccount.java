@@ -57,14 +57,14 @@ public class BankAccount {
                 '}';
     }
 
-    // equals override (based on name)
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BankAccount)) return false;
-        BankAccount that = (BankAccount) o;
-        return Objects.equals(accountHolderName, that.accountHolderName);
-    }
+@Override
+public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    BankAccount that = (BankAccount) o;
+    return Objects.equals(accountHolderName, that.accountHolderName);
+}
 
     // hashCode override
     @Override

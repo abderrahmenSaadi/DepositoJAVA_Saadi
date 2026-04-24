@@ -1,31 +1,58 @@
-
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        // ---- WORKSHOP PART ----
         Workshop workshop = new Workshop();
+        Scanner scanner = new Scanner(System.in);
 
-        try {
-            Car car1 = new Car("AB123CD", "Fiat Panda");
-            Car car2 = new Car("EF456GH", "Volkswagen Golf");
+        System.out.println("=== Workshop System ===");
 
-            workshop.addCar(car1);
-            workshop.addCar(car2);
+        while (true) {
+            System.out.println("\n1. Add Car");
+            System.out.println("2. Show Cars");
+            System.out.println("3. Exit");
+            System.out.print("Choice: ");
 
-            // Edge case: duplicate
-            workshop.addCar(new Car("AB123CD", "Different Model"));
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
 
-            // Edge case: null
-            workshop.addCar(null);
+            try {
+                switch (choice) {
 
-            workshop.printCars();
+                    case 1:
+                        System.out.print("Enter license plate: ");
+                        String plate = scanner.nextLine().trim();
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
+                        System.out.print("Enter model: ");
+                        String model = scanner.nextLine().trim();
+
+                        Car car = new Car(plate, model);
+                        boolean added = workshop.addCar(car);
+
+                        if (added) {
+                        System.out.println("Car added successfully.");
+                        } else {
+                        System.out.println("Failed to add car.");       
+                        }   
+                        break;
+
+                    case 2:
+                        workshop.printCars();
+                        break;
+
+                    case 3:
+                        System.out.println("Goodbye!");
+                        scanner.close();
+                        return;
+
+                    default:
+                        System.out.println("Invalid option.");
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
         }
-
-
-
     }
 }
