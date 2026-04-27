@@ -9,6 +9,7 @@ public class SchoolManagement {
     // ── School-wide collections (all lists are private, accessed via methods) ──
     private static final List<Student> allStudents = new ArrayList<>();
     private static final List<Teacher> allTeachers = new ArrayList<>();
+    private static Director director = new Director("Dr. Smith", 55, "admin123");
 
     // ── Shared scanner – one instance prevents resource leaks ─────────────────
     private static final Scanner scanner = new Scanner(System.in);
@@ -57,6 +58,9 @@ public class SchoolManagement {
                 // ── Registration showcase ──────────────────────────────────
                 case 11 -> showcaseRegistration();
 
+                // ─────────── Director login ──────────────────────
+                case 12 -> directorLogin();
+
                 // ── Exit ───────────────────────────────────────────────────
                 case 0 -> running = false;
 
@@ -95,11 +99,90 @@ public class SchoolManagement {
                 │  9) Print student grades                        │
                 │ 10) Showcase polymorphism (describeRole)        │
                 │ 11) Showcase registration (interface)           │
+                │ 12) director login                              │
+                │                                                 │
                 │  0) Exit                                        │
                 └─────────────────────────────────────────────────┘""");
     }
+// director login and menu are separate flows to demonstrate role-based access and more complex interactions.
+    private static void directorLogin() {
+    System.out.print("Enter Director password: ");
+    String input = scanner.nextLine();
 
-    
+    if (director.login(input)) {
+        System.out.println("✅ Access granted!");
+        directorMenu();
+    } else {
+        System.out.println("❌ Wrong password!");
+    }
+}
+private static void directorMenu() {
+    int choice;
+
+    do {
+        System.out.println("""
+                
+                ─── DIRECTOR PANEL ───
+                1) View all students
+                2) View all teachers
+                3) Remove student
+                4) Remove teacher
+                5) View ALL grades
+                0) Logout
+                """);
+
+        choice = readInt("→ Choice: ");
+
+        switch (choice) {
+            case 1 -> listAllStudents();
+            case 2 -> listAllTeachers();
+            case 3 -> removeStudent();
+            case 4 -> removeTeacher();
+            case 5 -> showAllGrades();
+            case 0 -> System.out.println("Logging out...");
+            default -> System.out.println("Invalid option!");
+        }
+
+    } while (choice != 0);
+}
+
+private static void removeStudent() {
+    if (allStudents.isEmpty()) {
+        System.out.println("No students to remove.");
+        return;
+    }
+
+    listAllStudents();
+    int index = readIntInRange("Select student to remove: ", 1, allStudents.size()) - 1;
+
+    Student removed = allStudents.remove(index);
+    System.out.println("Removed student: " + removed.getName());
+}
+
+private static void removeTeacher() {
+    if (allTeachers.isEmpty()) {
+        System.out.println("No teachers to remove.");
+        return;
+    }
+
+    listAllTeachers();
+    int index = readIntInRange("Select teacher to remove: ", 1, allTeachers.size()) - 1;
+
+    Teacher removed = allTeachers.remove(index);
+    System.out.println("Removed teacher: " + removed.getName());
+}
+private static void showAllGrades() {
+    if (allStudents.isEmpty()) {
+        System.out.println("No students available.");
+        return;
+    }
+
+    for (Student s : allStudents) {
+        s.printGrades();
+    }
+}
+// The following methods handle the flows for adding students/teachers, listing them, enrolling, grading, and showcasing features.
+
     private static void addScientificStudent() {
         System.out.println("\n─── Add Scientific Student ───");
         String name   = readNonBlankString("  Full name          : ");
@@ -334,6 +417,7 @@ public class SchoolManagement {
         ScientificStudent bob   = new ScientificStudent("Bob Heisenberg",16, "4B", "Physics");
         HumanitiesStudent cara  = new HumanitiesStudent("Cara Austen",   17, "5A", "Literature");
         HumanitiesStudent dan   = new HumanitiesStudent("Dan Umberto",   16, "4A", "History");
+        
         allStudents.add(alice);
         allStudents.add(bob);
         allStudents.add(cara);
