@@ -1,0 +1,358 @@
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class SchoolManagement {
+
+    // ── School-wide collections (all lists are private, accessed via methods) ──
+    private static final List<Student> allStudents = new ArrayList<>();
+    private static final List<Teacher> allTeachers = new ArrayList<>();
+
+    // ── Shared scanner – one instance prevents resource leaks ─────────────────
+    private static final Scanner scanner = new Scanner(System.in);
+
+    
+    public static void main(String[] args) {
+        preloadDemoData();        // seed system with realistic sample data
+        printBanner();
+        mainMenuLoop();
+        System.out.println("\n  Goodbye – school dismissed!\n");
+        scanner.close();
+    }
+
+    
+    private static void mainMenuLoop() {
+        boolean running = true;
+
+        while (running) {
+            printMainMenu();
+            int choice = readInt("→ Your choice: ");
+
+            switch (choice) {
+
+                // ── Student management ─────────────────────────────────────
+                case 1 -> addScientificStudent();
+                case 2 -> addHumanitiesStudent();
+                case 3 -> listAllStudents();
+
+                // ── Teacher management ─────────────────────────────────────
+                case 4 -> addSTEMTeacher();
+                case 5 -> addArtsTeacher();
+                case 6 -> listAllTeachers();
+
+                // ── Enrollment ─────────────────────────────────────────────
+                case 7 -> enrollStudentWithTeacher();
+
+                // ── Grading ────────────────────────────────────────────────
+                case 8 -> assignGradeFlow();
+
+                // ── Grade reports ──────────────────────────────────────────
+                case 9 -> printStudentGradesFlow();
+
+                // ── Polymorphism showcase ──────────────────────────────────
+                case 10 -> showcasePolymorphism();
+
+                // ── Registration showcase ──────────────────────────────────
+                case 11 -> showcaseRegistration();
+
+                // ── Exit ───────────────────────────────────────────────────
+                case 0 -> running = false;
+
+                default -> System.out.println("⚠️  Invalid option. Please choose 0–11.");
+            }
+        }
+    }
+
+
+   
+    private static void printBanner() {
+        System.out.println("""
+                
+                ╔═══════════════════════════════════════════════════╗
+                ║   🏫  SCHOOL MANAGEMENT SYSTEM  –  Java 2026  🏫  ║
+                ║          OOP: Encapsulation · Inheritance          ║
+                ║               Polymorphism · Abstraction           ║
+                ╚═══════════════════════════════════════════════════╝
+                """);
+    }
+
+    /** Prints the numbered main menu. */
+    private static void printMainMenu() {
+        System.out.println("""
+                
+                ┌─────────────────────────────────────────────────┐
+                │                   MAIN  MENU                    │
+                ├──────────────────────┬──────────────────────────┤
+                │  STUDENTS            │  TEACHERS                │
+                │  1) Add Scientific   │  4) Add STEM teacher     │
+                │  2) Add Humanities   │  5) Add Arts teacher     │
+                │  3) List all         │  6) List all             │
+                ├──────────────────────┴──────────────────────────┤
+                │  7) Enroll student with a teacher               │
+                │  8) Assign grade (teacher → student)            │
+                │  9) Print student grades                        │
+                │ 10) Showcase polymorphism (describeRole)        │
+                │ 11) Showcase registration (interface)           │
+                │  0) Exit                                        │
+                └─────────────────────────────────────────────────┘""");
+    }
+
+    
+    private static void addScientificStudent() {
+        System.out.println("\n─── Add Scientific Student ───");
+        String name   = readNonBlankString("  Full name          : ");
+        int    age    = readIntInRange("  Age               : ", 5, 25);
+        String clazz  = readNonBlankString("  Class (e.g. 3B)    : ");
+        String spec   = readNonBlankString("  Science spec.      : ");
+
+        
+        ScientificStudent s = new ScientificStudent(name, age, clazz, spec);
+        allStudents.add(s);
+        System.out.println("✅  Scientific student '" + name + "' created.");
+        s.registration();    // demonstrate Registrable interface immediately
+    }
+
+    
+    private static void addHumanitiesStudent() {
+        System.out.println("\n─── Add Humanities Student ───");
+        String name     = readNonBlankString("  Full name          : ");
+        int    age      = readIntInRange("  Age               : ", 5, 25);
+        String clazz    = readNonBlankString("  Class (e.g. 4A)    : ");
+        String interest = readNonBlankString("  Arts interest      : ");
+
+        HumanitiesStudent s = new HumanitiesStudent(name, age, clazz, interest);
+        allStudents.add(s);
+        System.out.println("✅  Humanities student '" + name + "' created.");
+        s.registration();
+    }
+
+   
+    private static void addSTEMTeacher() {
+        System.out.println("\n─── Add STEM Teacher ───");
+        String name     = readNonBlankString("  Full name          : ");
+        int    age      = readIntInRange("  Age               : ", 21, 70);
+        String subject  = readNonBlankString("  Subject            : ");
+        String research = readNonBlankString("  Research field     : ");
+
+        STEMTeacher t = new STEMTeacher(name, age, subject, research);
+        allTeachers.add(t);
+        System.out.println("✅  STEM teacher '" + name + "' created.");
+        t.registration();
+    }
+
+   
+    private static void addArtsTeacher() {
+        System.out.println("\n─── Add Arts Teacher ───");
+        String name    = readNonBlankString("  Full name          : ");
+        int    age     = readIntInRange("  Age               : ", 21, 70);
+        String subject = readNonBlankString("  Subject            : ");
+        String style   = readNonBlankString("  Teaching style     : ");
+
+        ArtsTeacher t = new ArtsTeacher(name, age, subject, style);
+        allTeachers.add(t);
+        System.out.println("✅  Arts teacher '" + name + "' created.");
+        t.registration();
+    }
+
+    
+    private static void listAllStudents() {
+        System.out.println("\n─── All Students ───");
+        if (allStudents.isEmpty()) {
+            System.out.println("  No students yet. Add some first!");
+            return;
+        }
+        for (int i = 0; i < allStudents.size(); i++) {
+            System.out.println("  " + (i + 1) + ". " + allStudents.get(i));
+        }
+    }
+
+    /** Prints a numbered list of all teachers currently in the system. */
+    private static void listAllTeachers() {
+        System.out.println("\n─── All Teachers ───");
+        if (allTeachers.isEmpty()) {
+            System.out.println("  No teachers yet. Add some first!");
+            return;
+        }
+        for (int i = 0; i < allTeachers.size(); i++) {
+            System.out.println("  " + (i + 1) + ". " + allTeachers.get(i));
+        }
+    }
+
+    private static void enrollStudentWithTeacher() {
+        System.out.println("\n─── Enroll Student with Teacher ───");
+
+        Teacher teacher = pickTeacher();
+        if (teacher == null) return;
+
+        Student student = pickStudent();
+        if (student == null) return;
+
+        teacher.enrollStudent(student);   
+    }
+
+    private static void assignGradeFlow() {
+        System.out.println("\n─── Assign Grade ───");
+
+        Teacher teacher = pickTeacher();
+        if (teacher == null) return;
+
+        // Show only the students belonging to this teacher
+        List<Student> roster = teacher.getClassRoster();
+        if (roster.isEmpty()) {
+            System.out.println("⚠️  " + teacher.getName()
+                    + " has no students enrolled yet. Use option 7 first.");
+            return;
+        }
+
+        System.out.println("  Students in " + teacher.getName() + "'s class:");
+        for (int i = 0; i < roster.size(); i++) {
+            System.out.println("    " + (i + 1) + ". " + roster.get(i));
+        }
+
+        int sIdx = readIntInRange("  Pick student number: ", 1, roster.size()) - 1;
+        Student student = roster.get(sIdx);
+
+        int grade = readIntInRange("  Grade (0–10): ", 0, 10);
+        teacher.assignGrade(student, grade);   // Teacher enforces ownership rule
+    }
+
+
+    private static void printStudentGradesFlow() {
+        System.out.println("\n─── Student Grade Report ───");
+        Student student = pickStudent();
+        if (student == null) return;
+        student.printGrades();   // Student handles its own grade display
+    }
+
+ 
+    private static void showcasePolymorphism() {
+        System.out.println("\n─── Polymorphism Showcase: describeRole() ───");
+        System.out.println("  Calling describeRole() on every Persona in the school:\n");
+
+        // Merge into a single Persona list to emphasise polymorphism
+        List<Persona> everyone = new ArrayList<>();
+        everyone.addAll(allStudents);
+        everyone.addAll(allTeachers);
+
+        if (everyone.isEmpty()) {
+            System.out.println("  School is empty. Add students or teachers first.");
+            return;
+        }
+
+        for (Persona p : everyone) {
+            System.out.print("  [" + p.getName() + "] → ");
+            p.describeRole();   // ← same method call, different output each time
+        }
+    }
+
+
+    private static void showcaseRegistration() {
+        System.out.println("\n─── Registration Showcase: Registrable interface ───");
+
+        List<Registrable> registrables = new ArrayList<>();
+        registrables.addAll(allStudents);
+        registrables.addAll(allTeachers);
+
+        if (registrables.isEmpty()) {
+            System.out.println("  School is empty. Add people first.");
+            return;
+        }
+
+        for (Registrable r : registrables) {
+            r.registration();    // interface polymorphism
+        }
+    }
+
+
+    private static Teacher pickTeacher() {
+        if (allTeachers.isEmpty()) {
+            System.out.println("⚠️  No teachers in the system yet. Add one first.");
+            return null;
+        }
+        listAllTeachers();
+        int idx = readIntInRange("  Pick teacher number: ", 1, allTeachers.size()) - 1;
+        return allTeachers.get(idx);
+    }
+
+
+    private static Student pickStudent() {
+        if (allStudents.isEmpty()) {
+            System.out.println("⚠️  No students in the system yet. Add one first.");
+            return null;
+        }
+        listAllStudents();
+        int idx = readIntInRange("  Pick student number: ", 1, allStudents.size()) - 1;
+        return allStudents.get(idx);
+    }
+
+
+    private static int readInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            try {
+                int value = scanner.nextInt();
+                scanner.nextLine();  // consume leftover newline
+                return value;
+            } catch (InputMismatchException e) {
+                scanner.nextLine();  // discard bad input
+                System.out.println("  ⚠️  Please enter a whole number.");
+            }
+        }
+    }
+
+
+    private static int readIntInRange(String prompt, int min, int max) {
+        while (true) {
+            int v = readInt(prompt);
+            if (v >= min && v <= max) return v;
+            System.out.println("  ⚠️  Please enter a value between " + min + " and " + max + ".");
+        }
+    }
+
+
+    private static String readNonBlankString(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            if (!input.isBlank()) return input;
+            System.out.println("  ⚠️  This field cannot be empty.");
+        }
+    }
+
+
+    private static void preloadDemoData() {
+        // ── Teachers ──────────────────────────────────────────────────────────
+        STEMTeacher  drNova    = new STEMTeacher ("Dr. Elena Nova",   45, "Physics",    "Quantum Entanglement");
+        ArtsTeacher  mrBronte  = new ArtsTeacher ("Mr. James Brontë", 52, "Literature", "Socratic");
+        allTeachers.add(drNova);
+        allTeachers.add(mrBronte);
+
+        // ── Students ──────────────────────────────────────────────────────────
+        ScientificStudent alice = new ScientificStudent("Alice Fermi",   17, "5A", "Biology");
+        ScientificStudent bob   = new ScientificStudent("Bob Heisenberg",16, "4B", "Physics");
+        HumanitiesStudent cara  = new HumanitiesStudent("Cara Austen",   17, "5A", "Literature");
+        HumanitiesStudent dan   = new HumanitiesStudent("Dan Umberto",   16, "4A", "History");
+        allStudents.add(alice);
+        allStudents.add(bob);
+        allStudents.add(cara);
+        allStudents.add(dan);
+
+        // ── Enrol students in their matching teachers ─────────────────────────
+        drNova.enrollStudent(alice);
+        drNova.enrollStudent(bob);
+        mrBronte.enrollStudent(cara);
+        mrBronte.enrollStudent(dan);
+
+        // ── Pre-assign some grades ────────────────────────────────────────────
+        drNova.assignGrade(alice, 9);
+        drNova.assignGrade(alice, 8);
+        drNova.assignGrade(bob,   7);
+        mrBronte.assignGrade(cara, 10);
+        mrBronte.assignGrade(cara, 9);
+        mrBronte.assignGrade(dan,  6);
+
+        System.out.println("✅  Demo data loaded. 2 teachers & 4 students ready.\n");
+    }
+}
