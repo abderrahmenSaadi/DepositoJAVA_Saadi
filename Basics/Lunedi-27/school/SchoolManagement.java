@@ -23,7 +23,7 @@ public class SchoolManagement {
         scanner.close();
     }
 
-    
+    //   The main menu loop keeps the program running until the user chooses to exit.
     private static void mainMenuLoop() {
         boolean running = true;
 
@@ -116,6 +116,7 @@ public class SchoolManagement {
         System.out.println("❌ Wrong password!");
     }
 }
+// The director menu allows managing the entire school, including viewing and removing students/teachers, and viewing all grades.
 private static void directorMenu() {
     int choice;
 
@@ -145,7 +146,7 @@ private static void directorMenu() {
 
     } while (choice != 0);
 }
-
+// delete studeent 
 private static void removeStudent() {
     if (allStudents.isEmpty()) {
         System.out.println("No students to remove.");
@@ -158,7 +159,7 @@ private static void removeStudent() {
     Student removed = allStudents.remove(index);
     System.out.println("Removed student: " + removed.getName());
 }
-
+// delete teacher
 private static void removeTeacher() {
     if (allTeachers.isEmpty()) {
         System.out.println("No teachers to remove.");
@@ -171,6 +172,8 @@ private static void removeTeacher() {
     Teacher removed = allTeachers.remove(index);
     System.out.println("Removed teacher: " + removed.getName());
 }
+
+// Show all grades for all students in the system, regardless of teacher. This demonstrates aggregation and access to student data from a central point.
 private static void showAllGrades() {
     if (allStudents.isEmpty()) {
         System.out.println("No students available.");
@@ -182,7 +185,7 @@ private static void showAllGrades() {
     }
 }
 // The following methods handle the flows for adding students/teachers, listing them, enrolling, grading, and showcasing features.
-
+    // add scientific student
     private static void addScientificStudent() {
         System.out.println("\n─── Add Scientific Student ───");
         String name   = readNonBlankString("  Full name          : ");
@@ -197,7 +200,7 @@ private static void showAllGrades() {
         s.registration();    // demonstrate Registrable interface immediately
     }
 
-    
+    // add humanities student
     private static void addHumanitiesStudent() {
         System.out.println("\n─── Add Humanities Student ───");
         String name     = readNonBlankString("  Full name          : ");
@@ -211,7 +214,7 @@ private static void showAllGrades() {
         s.registration();
     }
 
-   
+   // add STEM teacher
     private static void addSTEMTeacher() {
         System.out.println("\n─── Add STEM Teacher ───");
         String name     = readNonBlankString("  Full name          : ");
@@ -225,7 +228,7 @@ private static void showAllGrades() {
         t.registration();
     }
 
-   
+   // add arts teacher
     private static void addArtsTeacher() {
         System.out.println("\n─── Add Arts Teacher ───");
         String name    = readNonBlankString("  Full name          : ");
@@ -239,7 +242,7 @@ private static void showAllGrades() {
         t.registration();
     }
 
-    
+    // list all students in the system with their details. This is a simple read operation that demonstrates access to the student collection.
     private static void listAllStudents() {
         System.out.println("\n─── All Students ───");
         if (allStudents.isEmpty()) {
@@ -262,7 +265,7 @@ private static void showAllGrades() {
             System.out.println("  " + (i + 1) + ". " + allTeachers.get(i));
         }
     }
-
+    // The following methods handle the flows for enrolling students with teachers, assigning grades, and showcasing polymorphism and registration features.
     private static void enrollStudentWithTeacher() {
         System.out.println("\n─── Enroll Student with Teacher ───");
 
@@ -274,7 +277,7 @@ private static void showAllGrades() {
 
         teacher.enrollStudent(student);   
     }
-
+    // The assignGradeFlow method demonstrates the process of a teacher assigning a grade to a student, enforcing the ownership rule that teachers can only grade their own students. It also includes input validation and user prompts to guide the flow.
     private static void assignGradeFlow() {
         System.out.println("\n─── Assign Grade ───");
 
@@ -301,7 +304,7 @@ private static void showAllGrades() {
         teacher.assignGrade(student, grade);   // Teacher enforces ownership rule
     }
 
-
+    
     private static void printStudentGradesFlow() {
         System.out.println("\n─── Student Grade Report ───");
         Student student = pickStudent();
@@ -348,7 +351,7 @@ private static void showAllGrades() {
         }
     }
 
-
+    // Helper methods for picking teachers/students and reading input with validation.
     private static Teacher pickTeacher() {
         if (allTeachers.isEmpty()) {
             System.out.println("⚠️  No teachers in the system yet. Add one first.");
@@ -370,7 +373,7 @@ private static void showAllGrades() {
         return allStudents.get(idx);
     }
 
-
+    // Reads an integer from the user, re-prompting until a valid integer is entered.
     private static int readInt(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -385,7 +388,7 @@ private static void showAllGrades() {
         }
     }
 
-
+    // Reads an integer within a specified range from the user, re-prompting until valid input is given.
     private static int readIntInRange(String prompt, int min, int max) {
         while (true) {
             int v = readInt(prompt);
@@ -394,7 +397,7 @@ private static void showAllGrades() {
         }
     }
 
-
+    // Reads a non-blank string from the user, re-prompting until valid input is given.
     private static String readNonBlankString(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -404,7 +407,7 @@ private static void showAllGrades() {
         }
     }
 
-
+// Preloads some demo teachers and students to allow immediate testing of features without manual data entry.
     private static void preloadDemoData() {
         // ── Teachers ──────────────────────────────────────────────────────────
         STEMTeacher  drNova    = new STEMTeacher ("Dr. Elena Nova",   45, "Physics",    "Quantum Entanglement");

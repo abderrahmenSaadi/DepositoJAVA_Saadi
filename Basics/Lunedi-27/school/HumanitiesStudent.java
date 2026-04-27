@@ -9,7 +9,7 @@ class HumanitiesStudent extends Student {
         super(name, age, attendedClass);
         this.artsInterest = artsInterest;
     }
-
+ 
     // ── Getter / Setter ────────────────────────────────────────────────────────
 
     /** Returns the arts interest. */
