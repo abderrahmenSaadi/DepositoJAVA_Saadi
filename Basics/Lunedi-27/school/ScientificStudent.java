@@ -9,8 +9,7 @@ public class ScientificStudent extends Student {
     private String scienceSpecialisation; // e.g. "Biology", "Physics"
 
 
-    public ScientificStudent(String name, int age,
-                             String attendedClass, String scienceSpecialisation) {
+    public ScientificStudent(String name, int age,String attendedClass, String scienceSpecialisation) {
         super(name, age, attendedClass);   // call Student constructor
         this.scienceSpecialisation = scienceSpecialisation;
     }

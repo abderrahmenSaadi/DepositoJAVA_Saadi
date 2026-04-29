@@ -4,9 +4,8 @@ class HumanitiesStudent extends Student {
     private String artsInterest; // e.g. "Literature", "History", "Philosophy"
 
 
-    public HumanitiesStudent(String name, int age,
-                             String attendedClass, String artsInterest) {
-        super(name, age, attendedClass);
+    public HumanitiesStudent(String name, int age,String attendedClass, String artsInterest) {
+        super( name, age, attendedClass);   // call Student constructor
         this.artsInterest = artsInterest;
     }
  
