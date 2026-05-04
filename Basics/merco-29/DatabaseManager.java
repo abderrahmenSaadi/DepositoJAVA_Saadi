@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 public class DatabaseManager {
     private static DatabaseManager instance;
     private int connectionCount = 0;
-
-    
     private Connection connection; // Simulated database connection
+
+    // connection parameters from environment variables
 String url = System.getenv("DB_URL");
 String user = System.getenv("DB_USER");
 String pass = System.getenv("DB_PASSWORD");
-
+ // connection method
 public void connect() {
     try {
         String url = System.getenv("DB_URL");
@@ -32,7 +32,7 @@ public void connect() {
         System.out.println("Errore connessione: " + e.getMessage());
     }
 }
-
+ // Singleton pattern implementation
     private DatabaseManager() { }
     public static DatabaseManager getInstance() {
         if (instance == null) {
@@ -46,10 +46,9 @@ public void connect() {
     }
 public void saveData(Utente utente) {
     try {
-        connect(); // ← ADD THIS
+        connect(); 
 
-        String sql = "INSERT INTO utenti (nome, dato) VALUES (?, ?) " +
-                     "ON DUPLICATE KEY UPDATE dato = ?";
+        String sql = "INSERT INTO utenti (nome, dato) VALUES (?, ?) " ;
 
         PreparedStatement stmt = connection.prepareStatement(sql);
         stmt.setString(1, utente.getNome());
