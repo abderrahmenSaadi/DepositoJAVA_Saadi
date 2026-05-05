@@ -18,7 +18,7 @@ User user2 = new User("User2",
 );
 
 User user3 = new User("User3",
-        msg -> new EmojiDecorator(msg, "🔔")
+        msg -> new EmojiDecorator(msg, ": )")
 );
 
         boolean running = true;
