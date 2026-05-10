@@ -1,18 +1,9 @@
-# DepositoJAVA_Saadi
+![Skills](https://skillicons.dev/icons?i=java,spring,maven,git,github,idea,vscode)
 
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=java,spring,maven,git,github,idea,vscode" />
-</p>
+**Saadi Mohamed Abderrahmene**  
+📧 abouglia57@gmail.com | [GitHub](https://github.com/abderrahmenSaadi)
 
-<p align="center">
-  <strong>Saadi Mohamed Abderrahmene</strong><br/>
-  📧 abouglia57@gmail.com &nbsp;|&nbsp;
-  <a href="https://github.com/abderrahmenSaadi">GitHub</a>
-</p>
-
-<p align="center">
-  🇬🇧 <a href="README.md">English</a> &nbsp;|&nbsp; 🇮🇹 <a href="README.it.md">Italiano</a>
-</p>
+🇬🇧 [English](README.md) | 🇮🇹 [Italiano](README.it.md)
 
 ---
 
@@ -32,9 +23,9 @@ The course is structured in the following official modules:
 
 | # | Module | Hours | Status |
 |---|--------|-------|--------|
-| 1 | Java Foundations + Git & GitHub | 20h | ✅ In progress |
-| 2 | Objects in Java + First Backend Logic | 20h | 🔄 Upcoming |
-| 3 | The 3 Core OOP Principles | 16h | ⏳ Upcoming |
+| 1 | Java Foundations + Git & GitHub | 20h | ✅ Completed |
+| 2 | Objects in Java + First Backend Logic | 20h | ✅ In progress |
+| 3 | The 3 Core OOP Principles | 16h | 🔄 Upcoming |
 | 4 | Introduction to Spring & Spring Boot | 20h | ⏳ Upcoming |
 | 5 | Spring Data & Backend Architecture | 20h | ⏳ Upcoming |
 | 6 | Final Project (Complete Backend) | 16h | ⏳ Upcoming |
@@ -47,23 +38,27 @@ The course is structured in the following official modules:
 ## 🧠 Topics Covered
 
 ### ✅ Java Foundations + Versioning
+
 - Variables, data types, control flow
 - Methods, arrays, packages
 - Git workflow, branching, GitHub collaboration
 
-### 🔄 Object-Oriented Programming (OOP)
+### ✅ Object-Oriented Programming (OOP)
+
 - Classes & Objects
 - Encapsulation
 - Inheritance
 - Polymorphism
 
 ### ⏳ Spring Boot & Backend
+
 - MVC Architecture
 - REST API design
 - Spring Boot project setup
 - Dependency Injection
 
 ### ⏳ Spring Data & JPA
+
 - Database integration with JPA / Hibernate
 - CRUD operations
 - Validation & error handling
@@ -73,11 +68,26 @@ The course is structured in the following official modules:
 
 ## 🚀 Projects
 
-> ⚠️ Projects are added progressively as modules are completed.
+> Projects are added progressively as modules are completed.
 
-- 🔹 **Coming soon:** REST API with Spring Boot
-- 🔹 **Coming soon:** CRUD app with database integration
-- 🔹 **Coming soon:** Final project — complete backend application
+### 🔹 [DrinkMachine](https://github.com/abderrahmenSaadi/DrinkMachine)
+A Java simulation of a vending machine. Built to practice OOP fundamentals — classes, objects, encapsulation, and control flow logic in a real-world scenario.
+- **Tech:** Java
+- **Concepts:** OOP, class design, state management
+
+### 🔹 [Java Library Workgroup](https://github.com/FrancescoPalazzo97/java_library_workgroup)
+A collaborative group project — a Java library management system built as a team during the formazione. Practiced Git collaboration, branching, and working on shared codebases alongside other students.
+- **Tech:** Java, VS Code
+- **Concepts:** OOP, teamwork, Git collaboration, library/book management logic
+
+### 🔹 Ticket System *(in this repo — `ticket-system/`)*
+A practice project implementing a ticket management system in Java, exploring object relationships and basic backend logic.
+- **Tech:** Java
+- **Concepts:** OOP, classes, collections
+
+### 🔹 Coming soon: REST API with Spring Boot
+### 🔹 Coming soon: CRUD app with database integration
+### 🔹 Coming soon: Final project — complete backend application
 
 ---
 
@@ -86,24 +96,21 @@ The course is structured in the following official modules:
 ```
 DepositoJAVA_Saadi/
 │
-├── basics/        # Java fundamentals exercises
-├── oop/           # OOP concepts and examples
-├── collections/   # Collections and data structures
-├── projects/      # Small practice projects
-└── springboot/    # Spring Boot applications (in progress)
+├── Basics/            # Java fundamentals exercises
+├── PracticeTest/      # Practice tests (e.g. april17)
+├── ticket-system/     # Ticket management system project
+└── .gitignore
 ```
 
 ---
 
 ## 🛠️ Tech Stack
 
-<p>
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"/>
-  <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white"/>
-</p>
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ_IDEA-000000?style=for-the-badge&logo=intellij-idea&logoColor=white)
 
 - Java JDK 17+
 - Spring Boot
