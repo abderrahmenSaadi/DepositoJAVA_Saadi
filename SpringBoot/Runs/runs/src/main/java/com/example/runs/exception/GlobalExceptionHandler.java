@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,60 +33,59 @@ public class GlobalExceptionHandler {
 
     // RUN NOT FOUND
     @ExceptionHandler(RunNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleRunNotFound(
+    public ResponseEntity<ErrorResponse> handleRunNotFound(
             RunNotFoundException ex) {
 
-        Map<String, Object> error = new HashMap<>();
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                404,
+                LocalDateTime.now()
+        );
 
-        error.put("timestamp", LocalDateTime.now());
-        error.put("status", 404);
-        error.put("error", "Not Found");
-        error.put("message", ex.getMessage());
-
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(error);
     }
 
     // DUPLICATE RUN
     @ExceptionHandler(DuplicateRunException.class)
-    public ResponseEntity<Map<String, Object>> handleDuplicateRun(
+    public ResponseEntity<ErrorResponse> handleDuplicateRun(
             DuplicateRunException ex) {
 
-        Map<String, Object> error = new HashMap<>();
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                409,
+                LocalDateTime.now()
+        );
 
-        error.put("timestamp", LocalDateTime.now());
-        error.put("status", 409);
-        error.put("error", "Conflict");
-        error.put("message", ex.getMessage());
-
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(error);
     }
 
     // ILLEGAL ARGUMENT
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<Map<String, Object>> handleIllegalArgument(
+    public ResponseEntity<ErrorResponse> handleIllegalArgument(
             IllegalArgumentException ex) {
 
-        Map<String, Object> error = new HashMap<>();
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                400,
+                LocalDateTime.now()
+        );
 
-        error.put("timestamp", LocalDateTime.now());
-        error.put("status", 400);
-        error.put("error", "Bad Request");
-        error.put("message", ex.getMessage());
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(error);
     }
 
     // GENERIC EXCEPTION
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Map<String, Object>> handleGenericException(
+    public ResponseEntity<ErrorResponse> handleGenericException(
             Exception ex) {
 
-        Map<String, Object> error = new HashMap<>();
-
-        error.put("timestamp", LocalDateTime.now());
-        error.put("status", 500);
-        error.put("error", "Internal Server Error");
-        error.put("message", ex.getMessage());
+        ErrorResponse error = new ErrorResponse(
+                ex.getMessage(),
+                500,
+                LocalDateTime.now()
+        );
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(error);
