@@ -1,4 +1,4 @@
-package com.example.runs.records;
+package com.example.runs.model;
 import java.time.LocalDateTime;
 
 public record RunRecord(Integer id, String title, LocalDateTime startedOn, LocalDateTime completedOn, Double miles, Location location ){
@@ -10,4 +10,5 @@ public record RunRecord(Integer id, String title, LocalDateTime startedOn, Local
             throw new IllegalArgumentException("la data di fine non può precedere quella di inizio");
         }
     }
+    
 }
